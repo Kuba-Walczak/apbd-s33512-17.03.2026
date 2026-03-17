@@ -4,9 +4,9 @@ namespace task2.Interfaces;
 
 public interface IRentalService
 {
-    void addUser(User user);
-    void addEquipment(Equipment equipment);
-    List<Equipment> getAllEquipment();
-    List<Equipment> getAvailableEquipment();
-    //Rental RentEquipment(int userId, int equipmentId, int days);
+    void AddUser(User user);
+    void AddEquipment(Equipment equipment);
+    List<Equipment> GetAllEquipment();
+    List<Equipment> GetAvailableEquipment();
+    Rental RentEquipment(int userId, int equipmentId, int days);
 }
