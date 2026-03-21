@@ -19,16 +19,31 @@ public class RentalService : IRentalService {
     public Rental RentEquipment(int userId, int equipmentId, int days) {
         var user = _userRepository.GetById(userId);
         var userRentals = _rentalRepository.GetActiveByUserId(userId);
-        if (userRentals.Count > user.MaxActiveRentals) {
+        if (userRentals.Count >= user.MaxActiveRentals) {
             throw new Exception("User cannot have more active rentals");
         }
         var equipment = _equipmentRepository.GetById(equipmentId);
         if (equipment.Status != EquipmentStatus.Available) {
             throw new Exception("Equipment not available");
         }
-
         var dueDate = DateTime.Today.AddDays(days);
         var rental = new Rental(user, equipment, dueDate);
+        equipment.Status = EquipmentStatus.Rented;
+        _rentalRepository.Add(rental);
+        return rental;
+    }
+    
+    public Rental RentEquipment(int userId, int equipmentId, DateTime rentDate, DateTime dueDate) {
+        var user = _userRepository.GetById(userId);
+        var userRentals = _rentalRepository.GetActiveByUserId(userId);
+        if (userRentals.Count >= user.MaxActiveRentals) {
+            throw new Exception("User cannot have more active rentals");
+        }
+        var equipment = _equipmentRepository.GetById(equipmentId);
+        if (equipment.Status != EquipmentStatus.Available) {
+            throw new Exception("Equipment not available");
+        }
+        var rental = new Rental(user, equipment, rentDate, dueDate);
         equipment.Status = EquipmentStatus.Rented;
         _rentalRepository.Add(rental);
         return rental;

@@ -14,8 +14,15 @@ public class Rental {
         RentalDate = DateTime.Now;
         DueDate = dueDate;
     }
+    
+    public Rental(User user, Equipment equipment, DateTime rentDate, DateTime dueDate) {
+        User = user;
+        Equipment = equipment;
+        RentalDate = rentDate;
+        DueDate = dueDate;
+    }
 
     public override string ToString() {
-        return User + " " + Equipment + " " + RentalDate + " " + DueDate + " " + ReturnDate + " " + Fee;
+        return $"User: {User} | Equipment: {Equipment} | Rented: {RentalDate} | Due: {DueDate} | Returned: {ReturnDate?.ToString() ?? "N/A"} | Fee: {Fee.ToString() ?? "N/A"}";
     }
 }

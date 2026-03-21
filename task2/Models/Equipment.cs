@@ -19,6 +19,7 @@ public abstract class Equipment {
     }
 
     public override string ToString() {
-        return Id + " " + Name + " " + Description + " " + Status + " " + AddedDate;
+        var description = string.IsNullOrEmpty(Description) ? "" : $" | {Description}";
+        return $"[{Id}] {Name}{description} | Status: {Status} | Added: {AddedDate}";
     }
 }

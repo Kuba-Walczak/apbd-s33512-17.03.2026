@@ -37,13 +37,16 @@ public class Printer {
 
     public void PrintOverdueRentals() {
         Console.WriteLine("OVERDUE RENTALS");
-        foreach (var rental in _rentalRepository.GetAllOverdue()) {
+        foreach (var rental in _rentalRepository.GetOverdue()) {
             Console.WriteLine(rental);
         }
     }
 
     public void PrintReport() {
+        Console.WriteLine("REPORT");
         Console.WriteLine("Total rentals: " + _rentalRepository.GetAll().Count + "\n" +
-                          "Overdue rentals: " + _rentalRepository.GetAllOverdue().Count);
+        "Active: " + _rentalRepository.GetActive().Count + "\n" + 
+        "Overdue: " + _rentalRepository.GetOverdue().Count + "\n" +
+        string.Join("\n", _rentalRepository.GetAll()));
     }
 }
