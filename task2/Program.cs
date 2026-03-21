@@ -15,17 +15,29 @@ var rentalService = new RentalService(userRepository, equipmentRepository, renta
 
 var printer = new Printer(userRepository, equipmentRepository, rentalRepository);
 
-userRepository.Add(new User("Jan", "Kowalski", UserType.Employee));
-userRepository.Add(new User("Anna", "Nowak", UserType.Employee));
-userRepository.Add(new User("Beata", "Zielińska", UserType.Employee));
-userRepository.Add(new User("Piotr", "Szymański", UserType.Employee));
+var equipment1 = new Laptop("Dell", 4, 256);
+var equipment2 = new Laptop("Asus", 8, 512);
+var equipment3 = new Projector("HP", 50, 1920);
+var equipment4 = new Projector("Oracle", 100, 2560);
+var equipment5 = new Camera("Nikon", 12, false);
+var equipment6 = new Camera("Sony", 24, true);
+equipmentRepository.Add(equipment1);
+equipmentRepository.Add(equipment2);
+equipmentRepository.Add(equipment3);
+equipmentRepository.Add(equipment4);
+equipmentRepository.Add(equipment5);
+equipmentRepository.Add(equipment6);
 
-equipmentRepository.Add(new Laptop("Dell", 4, 256));
-equipmentRepository.Add(new Laptop("Asus", 8, 512));
-equipmentRepository.Add(new Projector("HP", 50, 1920));
-equipmentRepository.Add(new Projector("Oracle", 100, 2560));
-equipmentRepository.Add(new Camera("Nikon", 12, false));
-equipmentRepository.Add(new Camera("Sony", 24, true));
+var user1 = new User("Jan", "Kowalski", UserType.Employee);
+var user2 = new User("Anna", "Nowak", UserType.Student);
+var user3 = new User("Beata", "Zielińska", UserType.Employee);
+var user4 = new User("Piotr", "Szymański", UserType.Student);
+userRepository.Add(user1);
+userRepository.Add(user2);
+userRepository.Add(user3);
+userRepository.Add(user4);
+
+rentalService.RentEquipment(user1.Id, equipment2.Id, 5);
 
 printer.PrintAllEquipmentWithStatus();
 printer.PrintReport();
