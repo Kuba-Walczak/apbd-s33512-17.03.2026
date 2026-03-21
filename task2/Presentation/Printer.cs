@@ -15,29 +15,29 @@ public class Printer {
     }
 
     public void PrintAllEquipmentWithStatus() {
+        Console.WriteLine("EQUIPMENT - STATUS");
         foreach (var equipment in _equipmentRepository.GetAll()) {
-            Console.WriteLine("EQUIPMENT - STATUS");
             Console.WriteLine(equipment.Name + " - " + equipment.Status);
         }
     }
 
     public void PrintAvailableEquipment() {
+        Console.WriteLine("ALL AVAILABLE EQUIPMENT");
         foreach (var equipment in _equipmentRepository.GetAvailable()) {
-            Console.WriteLine("ALL AVAILABLE EQUIPMENT");
             Console.WriteLine(equipment);
         }
     }
 
     public void PrintActiveRentals(int userId) {
+        Console.WriteLine("ACTIVE RENTALS");
         foreach (var rental in _rentalRepository.GetActiveByUserId(userId)) {
-            Console.WriteLine("ACTIVE RENTALS");
             Console.WriteLine(rental);
         }
     }
 
     public void PrintOverdueRentals() {
+        Console.WriteLine("OVERDUE RENTALS");
         foreach (var rental in _rentalRepository.GetAllOverdue()) {
-            Console.WriteLine("OVERDUE RENTALS");
             Console.WriteLine(rental);
         }
     }
