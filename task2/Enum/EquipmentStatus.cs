@@ -1,7 +1,6 @@
 namespace task2.Enum;
 
-public enum EquipmentStatus
-{
+public enum EquipmentStatus {
     Available,
     Rented,
     Unavailable

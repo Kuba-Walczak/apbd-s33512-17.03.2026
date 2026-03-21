@@ -1,7 +1,6 @@
 namespace task2.Enum;
 
-public enum UserType
-{
+public enum UserType {
     Student,
     Employee
 }

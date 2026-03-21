@@ -1,12 +1,10 @@
 namespace task2.Models;
 
-public class Camera : Equipment
-{
-    public int Megapixels  { get; set; }
+public class Camera : Equipment {
+    public int Megapixels { get; set; }
     public bool HasOpticalZoom { get; set; }
 
-    public Camera(string name, int megapixels, bool hasOpticalZoom) : base(name)
-    {
+    public Camera(string name, int megapixels, bool hasOpticalZoom) : base(name) {
         Megapixels = megapixels;
         HasOpticalZoom = hasOpticalZoom;
     }
