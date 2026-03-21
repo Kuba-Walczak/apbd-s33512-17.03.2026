@@ -1,11 +1,16 @@
 using task2.Database;
 using task2.Interfaces;
+using task2.Models;
 
-namespace task2.Models;
+namespace task2.Repositories;
 
 public class UserRepository : IUserRepository {
-    private readonly Singleton _database = Singleton.Instance;
-    
+    private readonly Singleton _database;
+
+    public UserRepository(Singleton database) {
+        _database = database;
+    }
+
     public void Add(User user) {
         _database.Users.Add(user);
     }

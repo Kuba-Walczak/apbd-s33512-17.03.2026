@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
-using task2.Database;
 using task2.Enum;
 using task2.Interfaces;
 using task2.Models;
@@ -31,6 +29,7 @@ public class RentalService : IRentalService {
 
         var dueDate = DateTime.Today.AddDays(days);
         var rental = new Rental(user, equipment, dueDate);
+        equipment.Status = EquipmentStatus.Rented;
         _rentalRepository.Add(rental);
         return rental;
     }
@@ -40,7 +39,9 @@ public class RentalService : IRentalService {
         if (rental == null) {
             throw new Exception("Equipment is not currently being rented");
         }
-        var daysLate = (rental.DueDate - DateTime.Now).Days;
+        rental.ReturnDate = DateTime.Now;
+        rental.Equipment.Status = EquipmentStatus.Available;
+        var daysLate = (DateTime.Now - rental.DueDate).Days;
         rental.Fee = Math.Max(0, daysLate * PenaltyPerDayLate);
         return rental;
     }

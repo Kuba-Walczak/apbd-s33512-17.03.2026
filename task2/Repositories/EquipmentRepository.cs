@@ -1,12 +1,17 @@
 using task2.Database;
 using task2.Enum;
 using task2.Interfaces;
+using task2.Models;
 
-namespace task2.Models;
+namespace task2.Repositories;
 
 public class EquipmentRepository : IEquipmentRepository {
-    private readonly Singleton _database = Singleton.Instance;
-    
+    private readonly Singleton _database;
+
+    public EquipmentRepository(Singleton database) {
+        _database = database;
+    }
+
     public void Add(Equipment equipment) {
         _database.Equipment.Add(equipment);
     }

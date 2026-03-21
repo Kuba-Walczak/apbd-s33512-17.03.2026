@@ -1,11 +1,18 @@
-﻿using task2.Enum;
+﻿using task2.Database;
+using task2.Enum;
 using task2.Models;
+using task2.Presentation;
+using task2.Repositories;
 using task2.Services;
 
-var userRepository = new UserRepository();
-var equipmentRepository = new EquipmentRepository();
-var rentalRepository = new RentalRepository();
+var database = Singleton.Instance;
+
+var userRepository = new UserRepository(database);
+var equipmentRepository = new EquipmentRepository(database);
+var rentalRepository = new RentalRepository(database);
+
 var rentalService = new RentalService(userRepository, equipmentRepository, rentalRepository);
+
 var printer = new Printer(userRepository, equipmentRepository, rentalRepository);
 
 userRepository.Add(new User("Jan", "Kowalski", UserType.Employee));

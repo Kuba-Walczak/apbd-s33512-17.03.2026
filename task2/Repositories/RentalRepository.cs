@@ -1,10 +1,16 @@
 using task2.Database;
 using task2.Interfaces;
+using task2.Models;
 
-namespace task2.Models;
+namespace task2.Repositories;
 
 public class RentalRepository : IRentalRepository {
-    private readonly Singleton _database = Singleton.Instance;
+    private readonly Singleton _database;
+
+    public RentalRepository(Singleton database) {
+        _database = database;
+    }
+
     public void Add(Rental rental) {
         _database.Rentals.Add(rental);
     }

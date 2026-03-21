@@ -1,7 +1,7 @@
 using task2.Interfaces;
 using task2.Services;
 
-namespace task2.Models;
+namespace task2.Presentation;
 
 public class Printer {
     private readonly IUserRepository _userRepository;
@@ -29,7 +29,6 @@ public class Printer {
     }
 
     public void PrintActiveRentals(int userId) {
-        var user = _userRepository.GetById(userId);
         foreach (var rental in _rentalRepository.GetActiveByUserId(userId)) {
             Console.WriteLine("ACTIVE RENTALS");
             Console.WriteLine(rental);
