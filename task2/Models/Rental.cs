@@ -23,6 +23,6 @@ public class Rental {
     }
 
     public override string ToString() {
-        return $"User: {User} | Equipment: {Equipment} | Rented: {RentalDate} | Due: {DueDate} | Returned: {ReturnDate?.ToString() ?? "N/A"} | Fee: {Fee.ToString() ?? "N/A"}";
+        return $"User: {User} | Equipment: {Equipment} | Rented: {RentalDate:yyyy-MM-dd} | Due: {DueDate:yyyy-MM-dd} | Returned: {ReturnDate?.ToString("yyyy-MM-dd") ?? "N/A"} | Fee: {(ReturnDate == null ? "N/A" : Fee)}";
     }
 }

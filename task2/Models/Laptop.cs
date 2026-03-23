@@ -5,7 +5,6 @@ public class Laptop : Equipment {
     public int Storage { get; set; }
 
     public Laptop(string name, int ram, int storage) : base(name) {
-        Name = name;
         Ram = ram;
         Storage = storage;
     }

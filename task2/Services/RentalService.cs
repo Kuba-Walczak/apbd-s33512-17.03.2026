@@ -8,7 +8,6 @@ public class RentalService : IRentalService {
     private readonly IUserRepository _userRepository;
     private readonly IEquipmentRepository _equipmentRepository;
     private readonly IRentalRepository _rentalRepository;
-
     public RentalService(IUserRepository userRepository, IEquipmentRepository equipmentRepository, IRentalRepository rentalRepository) {
         _userRepository = userRepository;
         _equipmentRepository = equipmentRepository;

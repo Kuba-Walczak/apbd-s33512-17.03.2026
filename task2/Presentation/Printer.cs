@@ -1,15 +1,12 @@
 using task2.Interfaces;
-using task2.Services;
 
 namespace task2.Presentation;
 
 public class Printer {
-    private readonly IUserRepository _userRepository;
     private readonly IEquipmentRepository _equipmentRepository;
     private readonly IRentalRepository _rentalRepository;
 
-    public Printer(IUserRepository userRepository, IEquipmentRepository equipmentRepository, IRentalRepository rentalRepository) {
-        _userRepository = userRepository;
+    public Printer(IEquipmentRepository equipmentRepository, IRentalRepository rentalRepository) {
         _equipmentRepository = equipmentRepository;
         _rentalRepository = rentalRepository;
     }

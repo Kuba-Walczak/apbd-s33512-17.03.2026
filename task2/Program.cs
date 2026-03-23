@@ -1,4 +1,4 @@
-﻿using task2.Database;
+using task2.Database;
 using task2.Enum;
 using task2.Models;
 using task2.Presentation;
@@ -13,7 +13,7 @@ var rentalRepository = new RentalRepository(database);
 
 var rentalService = new RentalService(userRepository, equipmentRepository, rentalRepository);
 
-var printer = new Printer(userRepository, equipmentRepository, rentalRepository);
+var printer = new Printer(equipmentRepository, rentalRepository);
 
 //adding several equipment items of different types
 var equipment1 = new Laptop("Dell", 4, 256);
@@ -43,9 +43,10 @@ userRepository.Add(user4);
 rentalService.RentEquipment(user1.Id, equipment2.Id, 5);
 
 //an attempted invalid operation: exceeding a user limit (max 2)
+//comment out the 3rd rental operation to see the error
 rentalService.RentEquipment(user2.Id, equipment3.Id, 5);
 rentalService.RentEquipment(user2.Id, equipment4.Id, 7);
-rentalService.RentEquipment(user2.Id, equipment5.Id, 2);
+// rentalService.RentEquipment(user2.Id, equipment5.Id, 2);
 
 //a return completed on time
 rentalService.ReturnEquipment(equipment2.Id);

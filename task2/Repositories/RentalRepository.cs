@@ -25,7 +25,7 @@ public class RentalRepository : IRentalRepository {
         return _database.Rentals;
     }
     public List<Rental> GetOverdue() {
-        return _database.Rentals.FindAll(r => r.DueDate < DateTime.Now);
+        return _database.Rentals.FindAll(r => r.DueDate < DateTime.Now && r.ReturnDate == null);
     }
     public List<Rental> GetActive() {
         return _database.Rentals.FindAll(r => r.ReturnDate == null);
