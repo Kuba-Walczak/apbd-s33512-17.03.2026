@@ -16,7 +16,7 @@ To keep the coupling loose, I introduced dependency injection wherever I could. 
 Class Responsibilities
 
 The project is divided into distinct layers, each with a clear responsibility.
-[Model] Models hold only data with no business rules or data access.
-[Repository] Repositories encapsulate all data access logic for the database, meaning the storage mechanism can be swapped without touching any business logic.
-[Service] The rental service contains business rules: rental limit enforcement, equipment availability checks and fee calculation.
-[Presentation] Presentation handles all console output and depends only on repository interfaces, not on the service.
+* [Model] Models hold only data with no business rules or data access.
+* [Repository] Repositories encapsulate all data access logic for the database, meaning the storage mechanism can be swapped without touching any business logic.
+* [Service] The rental service contains business rules: rental limit enforcement, equipment availability checks and fee calculation.
+* [Presentation] Presentation handles all console output and depends only on repository interfaces, not on the service.
